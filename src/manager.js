@@ -77,7 +77,7 @@ export const load = (apiKey, version, libraries, loadCn) => {
     let baseUrl = 'https://maps.googleapis.com/';
 
     if (typeof loadCn == 'boolean' && loadCn === true) {
-      baseUrl = 'http://maps.google.cn/';
+      baseUrl = 'https://maps.google.cn/';
     }
 
     let url = baseUrl + 'maps/api/js?' +

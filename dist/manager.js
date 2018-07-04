@@ -97,7 +97,7 @@ var load = exports.load = function load(apiKey, version, libraries, loadCn) {
     var baseUrl = 'https://maps.googleapis.com/';
 
     if (typeof loadCn == 'boolean' && loadCn === true) {
-      baseUrl = 'http://maps.google.cn/';
+      baseUrl = 'https://maps.google.cn/';
     }
 
     var url = baseUrl + 'maps/api/js?' + (0, _keys2.default)(options).map(function (key) {

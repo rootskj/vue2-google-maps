@@ -99,14 +99,6 @@ exports.default = {
   mixins: [_mapElementMixin2.default, _getPropsValuesMixin2.default],
   props: props,
 
-  created: function created() {
-    this.$markerDeferedPromiseResolver = null
-    this.$markerIsResoleved = false
-    this.$markerDeferedPromise = new Promise(function (resolve) {
-      this.$markerDeferedPromiseResolver = resolve
-    }.bind(this))
-  },
-
   render: function render(h) {
     if (!this.$slots.default || this.$slots.default.length == 0) {
       return '';
@@ -127,22 +119,20 @@ exports.default = {
     }
   },
   deferredReady: function deferredReady() {
-    setTimeout(function() {
-      var _this = this;
+    var _this = this;
 
-      var options = _lodash2.default.mapValues(props, function (value, prop) {
-        return _this[prop];
-      });
-      options.map = null;
+    var options = _lodash2.default.mapValues(props, function (value, prop) {
+      return _this[prop];
+    });
+    options.map = this.$map;
 
-      // search ancestors for cluster object
-      var search = this.$findAncestor(function (ans) {
-        return ans.$clusterObject;
-      });
+    // search ancestors for cluster object
+    var search = this.$findAncestor(function (ans) {
+      return ans.$clusterObject;
+    });
 
-      this.$clusterObject = search ? search.$clusterObject : null;
-      this.createMarker(options);
-    }.bind(this), 0)
+    this.$clusterObject = search ? search.$clusterObject : null;
+    this.createMarker(options);
   },
 
 
@@ -155,9 +145,6 @@ exports.default = {
       if (this.$clusterObject) {
         this.$clusterObject.addMarker(this.$markerObject);
       }
-
-      this.$markerDeferedPromiseResolver()
-      this.$markerIsResoleved = true
     }
   }
 };
