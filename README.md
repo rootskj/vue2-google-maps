@@ -1,5 +1,9 @@
 # vue-google-maps
 
+## China https support
+
+This is modification of vue-google-maps to support https server in China domains.
+
 ## Vue-2 port of vue-google-maps
 
 This is the Vue 2.x port of vue-google-maps!
